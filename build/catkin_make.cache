@@ -1,0 +1,2 @@
+main
+-DCATKIN_DEVEL_PREFIX=/home/talas/文档/ros/exp3_ws/devel -DCMAKE_INSTALL_PREFIX=/home/talas/文档/ros/exp3_ws/install -G Unix Makefiles

@@ -1,0 +1,20 @@
+digraph G {
+node [shape=box];
+"base_link" [label="base_link"];
+"caster_link" [label="caster_link"];
+"lf_motor_link" [label="lf_motor_link"];
+"lf_wheel_link" [label="lf_wheel_link"];
+"rf_motor_link" [label="rf_motor_link"];
+"rf_wheel_link" [label="rf_wheel_link"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_link" -> "base_link_to_caster_link" [label="xyz: 0.1 0 -0.04 \nrpy: 0 -0 0"]
+"base_link_to_caster_link" -> "caster_link"
+"base_link" -> "base_link_to_lf_motor_link" [label="xyz: -0.03 0.1 -0.02 \nrpy: 0 -0 0"]
+"base_link_to_lf_motor_link" -> "lf_motor_link"
+"lf_motor_link" -> "lf_motor_link_to_lf_wheel_link" [label="xyz: 0 0.025 0 \nrpy: 0 -0 0"]
+"lf_motor_link_to_lf_wheel_link" -> "lf_wheel_link"
+"base_link" -> "base_link_to_rf_motor_link" [label="xyz: -0.03 -0.1 -0.02 \nrpy: 0 -0 0"]
+"base_link_to_rf_motor_link" -> "rf_motor_link"
+"rf_motor_link" -> "rf_motor_link_to_rf_wheel_link" [label="xyz: 0 -0.025 0 \nrpy: 0 -0 0"]
+"rf_motor_link_to_rf_wheel_link" -> "rf_wheel_link"
+}

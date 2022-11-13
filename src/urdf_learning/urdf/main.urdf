@@ -1,0 +1,110 @@
+<!-- 扫地机器人模型 -->
+<?xml version="1.0"?>
+<robot name="urdf_learning">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <cylinder length="0.1" radius="0.2"/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+            <material name="yellow">
+                <color rgba="0.1 0.1 0 0.5"/>
+            </material>
+        </visual>
+        <!-- <collision>
+            <geometry>
+                <cylinder length="0.1" radius="0.2"/>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </geometry>
+        </collision>
+
+        <inertial>
+            <mass value="1"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1"/>
+        </inertial> -->
+    </link>
+    <link name="caster_link">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <sphere radius="0.01"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+    <link name="lf_motor_link">
+        <visual>
+            <origin rpy="0.5 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+    <link name="lf_wheel_link">
+        <visual>
+            <origin rpy="0.5 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.05" radius="0.1"/>
+            </geometry>
+            <material name="white">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+    <link name="rf_motor_link">
+        <visual>
+            <origin rpy="0.5 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.1" radius="0.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+    <link name="rf_wheel_link">
+        <visual>
+            <origin rpy="0.5 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder length="0.05" radius="0.1"/>
+            </geometry>
+            <material name="white">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="base_link_to_caster_link" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_link"/>
+        <origin rpy="0 0 0" xyz="0.1 0 -0.04"/>
+    </joint>
+    <joint name="base_link_to_lf_motor_link" type="fixed">
+        <parent link="base_link"/>
+        <child link="lf_motor_link"/>
+        <origin rpy="0 0 0" xyz="-0.03 0.1 -0.02"/>
+    </joint>
+    <joint name="lf_motor_link_to_lf_wheel_link" type="fixed">
+        <parent link="lf_motor_link"/>
+        <child link="lf_wheel_link"/>
+        <origin rpy="0 0 0" xyz="0 0.025 0"/>
+    </joint>
+    <joint name="base_link_to_rf_motor_link" type="fixed">
+        <parent link="base_link"/>
+        <child link="rf_motor_link"/>
+        <origin rpy="0 0 0" xyz="-0.03 -0.1 -0.02"/>
+    </joint>
+    <joint name="rf_motor_link_to_rf_wheel_link" type="fixed">
+        <parent link="rf_motor_link"/>
+        <child link="rf_wheel_link"/>
+        <origin rpy="0 0 0" xyz="0 -0.025 0"/>
+    </joint>
+    
+
+</robot>

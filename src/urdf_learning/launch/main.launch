@@ -1,0 +1,11 @@
+<!-- 运行main.urdf -->
+<launch>
+    <param name="robot_description" textfile="$(find urdf_learning)/urdf/main_xacro.urdf" />
+    <!-- 运行joint_state_publisher_gui节点，用于控制机器人的关节 -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    <!-- 运行robot_state_publisher节点，用于显示机器人的模型 -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <!-- 运行rviz节点，用于显示机器人的模型 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_learning)/config/main_xacro.rviz" required="true" />
+    <!-- <node name="rviz" pkg="rviz" type="rviz"/> -->
+</launch>

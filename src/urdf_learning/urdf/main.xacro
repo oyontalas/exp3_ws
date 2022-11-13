@@ -1,0 +1,241 @@
+<robot name="urdf_learning" xmlns:xacro="http://ros.org/wiki/xacro">
+<!-- <robot name="urdf_learning"> -->
+
+    <!-- 标签定义 -->
+    <!-- <material name="blue">
+        <color rgba="0.5 0.5 1 0.8"/>
+    </material>
+    <material name="black">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+    <material name="gray">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+    <material name="white">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material> -->
+
+    <!-- 属性 -->
+    <xacro:property name="PI" value="3.141592653589"/>
+    <xacro:property name="base_height" value="0.08"/>
+    <xacro:property name="base_radius" value="0.17"/>
+    <xacro:property name="caster_radius" value="0.01"/>
+    <xacro:property name="motor_height" value="0.1"/>
+    <xacro:property name="motor_radius" value="0.005"/>
+    <xacro:property name="wheel_height" value="0.015"/>
+    <xacro:property name="wheel_radius" value="0.03"/>
+
+    <xacro:property name="base_color" value="0.9 0.9 0.1 0.5"/>
+    <xacro:property name="caster_color" value="0.1 0.1 0.1 1"/>
+    <xacro:property name="motor_color" value="0.5 0.5 0.5 1"/>
+    <xacro:property name="wheel_color" value="0.9 0.9 0.9 1"/>
+
+    <xacro:property name="base_mass" value="1"/>
+    <xacro:property name="caster_mass" value="0.05"/>
+    <xacro:property name="motor_mass" value="0.1"/>
+    <xacro:property name="wheel_mass" value="0.05"/>
+
+
+    <xacro:property name="base_origin_xyz" value="0 0 0"/>
+    <xacro:property name="base_origin_rpy" value="0 0 0"/>
+    <xacro:property name="caster_origin_xyz" value="0 0 0"/>
+    <xacro:property name="caster_origin_rpy" value="0 0 0"/>
+    <xacro:property name="motor_origin_y" value="0.001"/>
+    <xacro:property name="motor_origin_rpy" value="${PI/2} 0 0"/>
+    <xacro:property name="wheel_origin_y" value="0.025"/>
+    <xacro:property name="wheel_origin_rpy" value="${PI/2} 0 0"/>
+
+    <xacro:property name="base_to_caster_joint_xyz" value="0.1 0 -0.04"/>
+    <xacro:property name="base_to_caster_joint_rpy" value="0 0 0"/>
+
+    <xacro:property name="base_to_motor_joint_y" value="0.1"/>
+    <!-- <xacro:property name="base_to_lf_motor_joint_xyz" value="-0.03 ${base_to_motor_joint_y} -0.02"/> -->
+    <xacro:property name="base_to_motor_joint_rpy" value="0 0 0"/>
+    <!-- <xacro:property name="base_to_rf_motor_joint_xyz" value="0.03 ${-base_to_motor_joint_y} -0.02"/> -->
+    <!-- <xacro:property name="base_to_rf_motor_joint_rpy" value="0 0 0"/> -->
+
+    <xacro:property name="motor_to_wheel_joint_y" value="0.025"/>
+    <!-- <xacro:property name="lf_motor_to_wheel_joint_xyz" value="0 ${motor_to_wheel_joint_y} 0"/> -->
+    <xacro:property name="motor_to_wheel_joint_rpy" value="0 0 0"/>
+    <!-- <xacro:property name="rf_motor_to_wheel_joint_xyz" value="0 ${-motor_to_wheel_joint_y} 0"/> -->
+    <!-- <xacro:property name="rf_motor_to_wheel_joint_rpy" value="0 0 0"/> -->
+
+
+    <xacro:property name="wheel_joint_xyz" value="0 0 0"/>
+    <xacro:property name="wheel_joint_rpy" value="0 ${PI/2} 0"/>
+    <xacro:property name="wheel_joint_axis" value="0 1 0"/>
+
+    <xacro:property name="motor_joint_xyz" value="0 0 0"/>
+    <xacro:property name="motor_joint_rpy" value="0 ${PI/2} 0"/>
+    <xacro:property name="motor_joint_axis" value="0 1 0"/>
+
+
+
+    <!-- Macro for inertia matrix -->
+    <xacro:macro name="sphere_inertial_matrix" params="m r">
+        <inertial>
+            <mass value="${m}" />
+            <inertia ixx="${2*m*r*r/5}" ixy="0" ixz="0"
+                iyy="${2*m*r*r/5}" iyz="0" 
+                izz="${2*m*r*r/5}" />
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="cylinder_inertial_matrix" params="m r h">
+        <inertial>
+            <mass value="${m}" />
+            <inertia ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0"
+                iyy="${m*(3*r*r+h*h)/12}" iyz = "0"
+                izz="${m*r*r/2}" /> 
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="Box_inertial_matrix" params="m l w h">
+       <inertial>
+               <mass value="${m}" />
+               <inertia ixx="${m*(h*h + l*l)/12}" ixy = "0" ixz = "0"
+                   iyy="${m*(w*w + l*l)/12}" iyz= "0"
+                   izz="${m*(w*w + h*h)/12}" />
+       </inertial>
+   </xacro:macro>
+
+
+    <!-- 链 -->
+    <xacro:macro name="base_link">
+        <link name="base_link">
+            <visual>
+                <origin xyz="${base_origin_xyz}" rpy="${base_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${base_height}" radius="${base_radius}"/>
+                </geometry>
+                <material name="blue">
+                    <color rgba="${base_color}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="${base_origin_xyz}" rpy="${base_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${base_height}" radius="${base_radius}"/>
+                </geometry>
+            </collision>
+            <xacro:cylinder_inertial_matrix m="${base_mass}" r="${base_radius}" h="${base_height}"/>
+
+        </link>
+        <gazebo reference="base_link">
+            <material>Gazebo/Blue</material>
+        </gazebo>
+    </xacro:macro>
+    <xacro:macro name="caster_link">
+        <link name="caster_link">
+            <visual>
+                <origin xyz="${caster_origin_xyz}" rpy="${caster_origin_rpy}"/>
+                <geometry>
+                    <sphere radius="${caster_radius}"/>
+                </geometry>
+                <material name="black">
+                    <color rgba="${caster_color}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="${caster_origin_xyz}" rpy="${caster_origin_rpy}"/>
+                <geometry>
+                    <sphere radius="${caster_radius}"/>
+                </geometry>
+            </collision>
+            <xacro:sphere_inertial_matrix m="${caster_mass}" r="${caster_radius}"/>
+            
+        </link>
+        <gazebo reference="caster_link">
+            <material>Gazebo/Black</material>
+        </gazebo>
+</xacro:macro>
+    <xacro:macro name="motor_link" params="name flag">
+        <link name="${name}_motor_link">
+            <visual>
+                <origin xyz="0 ${flag*motor_origin_y} 0" rpy="${motor_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${motor_height}" radius="${motor_radius}"/>
+                </geometry>
+                <material name="red">
+                    <color rgba="${motor_color}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 ${flag*motor_origin_y} 0" rpy="${motor_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${motor_height}" radius="${motor_radius}"/>
+                </geometry>
+            </collision>
+            <xacro:cylinder_inertial_matrix m="${motor_mass}" r="${motor_radius}" h="${motor_height}"/>
+
+        </link>
+        <gazebo reference="${name}_motor_link">
+            <material>Gazebo/Red</material>
+        </gazebo>
+    </xacro:macro>
+    <xacro:macro name="wheel_link" params="name flag">
+        <link name="${name}_wheel_link">
+            <visual>
+                <origin xyz="0 ${flag*wheel_origin_y} 0" rpy="${wheel_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+                </geometry>
+                <material name="green">
+                    <color rgba="${wheel_color}"/>
+                </material>
+            </visual>
+            <collision>
+                <origin xyz="0 ${flag*wheel_origin_y} 0" rpy="${wheel_origin_rpy}"/>
+                <geometry>
+                    <cylinder length="${wheel_height}" radius="${wheel_radius}"/>
+                </geometry>
+            </collision>
+            <xacro:cylinder_inertial_matrix m="${wheel_mass}" r="${wheel_radius}" h="${wheel_height}"/>
+
+        </link>
+        <gazebo reference="${name}_wheel_link">
+            <material>Gazebo/Green</material>
+        </gazebo>
+    </xacro:macro>
+    
+    <!-- 关节 -->
+    <xacro:macro name="caster_joint" >
+        <joint name="base_to_caster_joint" type="continuous">
+            <parent link="base_link"/>
+            <child link="caster_link"/>
+            <origin xyz="${base_to_caster_joint_xyz}" rpy="${base_to_caster_joint_rpy}"/>
+        </joint>
+    </xacro:macro>
+    <xacro:macro name="motor_joint" params="name flag">
+        <joint name="base_to_${name}_motor_joint" type="fixed">
+            <parent link="base_link"/>
+            <child link="${name}_motor_link"/>
+            <origin xyz="-0.03 ${flag*base_to_motor_joint_y} -0.02" rpy="${base_to_motor_joint_rpy}"/>
+            <axis xyz="${motor_joint_axis}"/>
+        </joint>
+    </xacro:macro>
+    <xacro:macro name="wheel_joint" params="name flag">
+        <joint name="motor_to_${name}_wheel_joint" type="continuous">
+            <parent link="${name}_motor_link"/>
+            <child link="${name}_wheel_link"/>
+            <origin xyz="0 ${flag*motor_to_wheel_joint_y} 0" rpy="${motor_to_wheel_joint_rpy}"/>
+            <axis xyz="${wheel_joint_axis}"/>
+        </joint>
+    </xacro:macro>
+
+    <!-- 实例化 -->
+    <xacro:base_link/>
+    <xacro:caster_link/>
+    <xacro:motor_link name="lf" flag="1"/>
+    <xacro:motor_link name="rf" flag="-1"/>
+    <xacro:wheel_link name="lf" flag="1"/>
+    <xacro:wheel_link name="rf" flag="-1"/>
+    <xacro:caster_joint/>
+    <xacro:motor_joint name="lf" flag="1"/>
+    <xacro:motor_joint name="rf" flag="-1"/>
+    <xacro:wheel_joint name="lf" flag="1"/>
+    <xacro:wheel_joint name="rf" flag="-1"/>
+
+
+
+</robot>
