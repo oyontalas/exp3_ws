@@ -2,15 +2,9 @@
 <launch>
     <!-- set launch param -->
     <arg name="model" default="$(find urdf_learning)/urdf/include.xacro"/>
-    <arg name="paused" default="false"/>
-    <arg name="use_sim_time" default="true"/>
-    <arg name="gui" default="true"/>
-    <arg name="headless" default="false"/>
-    <arg name="debug" default="true"/>
-    <arg name="rvizconfig" default="$(find urdf_learning)/config/car_robot_gazebo.rviz"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find urdf_learning)/worlds/main.world"/>
+        <arg name="world_name" value="$(find urdf_learning)/worlds/house1.world"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
