@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/talas/文档/ros/exp3_ws/devel/lib/main/main"
-  "/home/talas/文档/ros/exp3_ws/devel/lib/main/main.pdb"
+  "/media/talas/文档/Ubuntu/ros/exp3_ws/devel/lib/main/main"
+  "/media/talas/文档/Ubuntu/ros/exp3_ws/devel/lib/main/main.pdb"
   "CMakeFiles/main.dir/src/main.cpp.o"
 )
 

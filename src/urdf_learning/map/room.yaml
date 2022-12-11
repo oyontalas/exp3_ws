@@ -1,4 +1,4 @@
-image: /home/talas/文档/ros/exp3_ws/src/urdf_learning/map/room.pgm
+image: /media/talas/文档/Ubuntu/ros/exp3_ws/src/urdf_learning/map/room.pgm
 resolution: 0.050000
 origin: [-50.000000, -50.000000, 0.000000]
 negate: 0

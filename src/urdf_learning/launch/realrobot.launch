@@ -1,8 +1,11 @@
 <launch>
+    <!-- set launch param -->
+    <!-- <arg name="model" default="$(find urdf_learning)/urdf/include.xacro"/> -->
+
     <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_rplidar_link_broadcaster"
         args="0.0 0.0 0.1 1.5707963267949 0.0 0.0 base_link rplidar_link"/>
-
-
+    <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_rplidar_link_broadcaster"
+        args="0.0 0.0 0.1 0.0 0.0 0.0 base_link rplidar_link"/> -->
 
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
         <!-- Publish scans from best pose at a max of 10 Hz -->
@@ -86,11 +89,16 @@
     </node>
 
 
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+    
 
-    <!-- 在gazebo中加载机器人模型 -->
-    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model main" /> -->
+    <!-- 设置地图的配置文件 -->
+    <!-- <arg name="map" default="room.yaml" /> -->
+    <!-- 运行地图服务器，并且加载设置的地图 -->
+    <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(find urdf_learning)/map/$(arg map)"/> -->
 
-    <arg name="rvizconfig" default="$(find urdf_learning)/config/base_move_slam.rviz"/>
+    <arg name="rvizconfig" default="$(find urdf_learning)/config/realrobot.rviz"/>
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
     <!-- <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"/> -->
 

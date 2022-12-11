@@ -1,4 +1,4 @@
-prefix=/home/talas/文档/ros/exp3_ws/devel
+prefix=/media/talas/文档/Ubuntu/ros/exp3_ws/devel
 
 Name: main
 Description: Description of main

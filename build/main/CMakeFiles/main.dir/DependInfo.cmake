@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/talas/文档/ros/exp3_ws/src/main/src/main.cpp" "/home/talas/文档/ros/exp3_ws/build/main/CMakeFiles/main.dir/src/main.cpp.o"
+  "/media/talas/文档/Ubuntu/ros/exp3_ws/src/main/src/main.cpp" "/media/talas/文档/Ubuntu/ros/exp3_ws/build/main/CMakeFiles/main.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
