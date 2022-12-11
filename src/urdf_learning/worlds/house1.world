@@ -881,7 +881,7 @@
           <geometry>
             <mesh>
               <scale>1 1 1</scale>
-              <uri>/home/talas/文档/ros/exp3_ws/src/urdf_learning/meshes/rplidar.dae</uri>
+              <uri>/media/talas/文档/Ubuntu/ros/exp3_ws/src/urdf_learning/meshes/rplidar.dae</uri>
             </mesh>
           </geometry>
           <material>

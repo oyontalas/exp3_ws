@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/talas/文档/ros/exp3_ws/src/main/src/main.cpp
+/media/talas/文档/Ubuntu/ros/exp3_ws/src/main/src/main.cpp
 ros/ros.h
-/home/talas/文档/ros/exp3_ws/src/main/src/ros/ros.h
+/media/talas/文档/Ubuntu/ros/exp3_ws/src/main/src/ros/ros.h
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

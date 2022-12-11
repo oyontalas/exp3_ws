@@ -1,8 +1,8 @@
-# Install script for directory: /home/talas/文档/ros/exp3_ws/src/main
+# Install script for directory: /media/talas/文档/Ubuntu/ros/exp3_ws/src/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/talas/文档/ros/exp3_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/media/talas/文档/Ubuntu/ros/exp3_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/talas/文档/ros/exp3_ws/build/main/catkin_generated/installspace/main.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/media/talas/文档/Ubuntu/ros/exp3_ws/build/main/catkin_generated/installspace/main.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/main/cmake" TYPE FILE FILES
-    "/home/talas/文档/ros/exp3_ws/build/main/catkin_generated/installspace/mainConfig.cmake"
-    "/home/talas/文档/ros/exp3_ws/build/main/catkin_generated/installspace/mainConfig-version.cmake"
+    "/media/talas/文档/Ubuntu/ros/exp3_ws/build/main/catkin_generated/installspace/mainConfig.cmake"
+    "/media/talas/文档/Ubuntu/ros/exp3_ws/build/main/catkin_generated/installspace/mainConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/main" TYPE FILE FILES "/home/talas/文档/ros/exp3_ws/src/main/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/main" TYPE FILE FILES "/media/talas/文档/Ubuntu/ros/exp3_ws/src/main/package.xml")
 endif()
 

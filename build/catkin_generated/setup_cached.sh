@@ -7,8 +7,8 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/talas/文档/ros/exp3_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/talas/文档/ros/exp3_ws/devel/lib:$LD_LIBRARY_PATH"
-export PWD='/home/talas/文档/ros/exp3_ws/build'
-export ROSLISP_PACKAGE_DIRECTORIES='/home/talas/文档/ros/exp3_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/talas/文档/ros/exp3_ws/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/media/talas/文档/Ubuntu/ros/exp3_ws/devel:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/media/talas/文档/Ubuntu/ros/exp3_ws/devel/lib:$LD_LIBRARY_PATH"
+export PWD='/media/talas/文档/Ubuntu/ros/exp3_ws/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/media/talas/文档/Ubuntu/ros/exp3_ws/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/media/talas/文档/Ubuntu/ros/exp3_ws/src:$ROS_PACKAGE_PATH"

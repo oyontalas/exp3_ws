@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/talas/文档/ros/exp3_ws/src
+CMAKE_SOURCE_DIR = /media/talas/文档/Ubuntu/ros/exp3_ws/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/talas/文档/ros/exp3_ws/build
+CMAKE_BINARY_DIR = /media/talas/文档/Ubuntu/ros/exp3_ws/build
 
 # Utility rule file for std_msgs_generate_messages_cpp.
 
@@ -63,10 +63,10 @@ main/CMakeFiles/std_msgs_generate_messages_cpp.dir/build: std_msgs_generate_mess
 .PHONY : main/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
 
 main/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean:
-	cd /home/talas/文档/ros/exp3_ws/build/main && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
+	cd /media/talas/文档/Ubuntu/ros/exp3_ws/build/main && $(CMAKE_COMMAND) -P CMakeFiles/std_msgs_generate_messages_cpp.dir/cmake_clean.cmake
 .PHONY : main/CMakeFiles/std_msgs_generate_messages_cpp.dir/clean
 
 main/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend:
-	cd /home/talas/文档/ros/exp3_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/talas/文档/ros/exp3_ws/src /home/talas/文档/ros/exp3_ws/src/main /home/talas/文档/ros/exp3_ws/build /home/talas/文档/ros/exp3_ws/build/main /home/talas/文档/ros/exp3_ws/build/main/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/talas/文档/Ubuntu/ros/exp3_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/talas/文档/Ubuntu/ros/exp3_ws/src /media/talas/文档/Ubuntu/ros/exp3_ws/src/main /media/talas/文档/Ubuntu/ros/exp3_ws/build /media/talas/文档/Ubuntu/ros/exp3_ws/build/main /media/talas/文档/Ubuntu/ros/exp3_ws/build/main/CMakeFiles/std_msgs_generate_messages_cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : main/CMakeFiles/std_msgs_generate_messages_cpp.dir/depend
 
